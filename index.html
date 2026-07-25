@@ -21,14 +21,14 @@
             color: var(--text-dark);
         }
 
-        /* עיצוב ה-HERO */
+        /* --- עיצוב ה-HERO המתוקן (רחב ונמוך יותר) --- */
         .hero-container {
             background-color: #faefd9;
             border: 1px solid #ebd9b8;
             border-radius: 20px;
-            padding: 25px 20px;
-            max-width: 900px;
-            margin: 0 auto 25px auto;
+            padding: 15px 25px; /* פאדינג מופחת למניעת אורך מופרז */
+            max-width: 1000px;  /* מותאם לרוחב הגריד של הכרטיסיות למטה */
+            margin: 0 auto 20px auto;
             position: relative;
             box-shadow: 0 6px 20px rgba(168, 40, 40, 0.05);
         }
@@ -39,8 +39,8 @@
             align-items: center;
             font-family: monospace;
             color: #b87a4d;
-            font-size: 0.85em;
-            margin-bottom: 15px;
+            font-size: 0.8em;
+            margin-bottom: 8px;
             direction: ltr;
         }
 
@@ -59,7 +59,7 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap-reverse;
-            gap: 20px;
+            gap: 15px;
         }
 
         .hero-text {
@@ -72,37 +72,36 @@
             display: inline-block;
             background: #fdf3e3;
             border: 1px solid #e0cda9;
-            padding: 4px 14px;
-            border-radius: 15px;
-            font-size: 0.85em;
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
             color: var(--primary-red);
             font-weight: bold;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
         .hero-title {
-            font-size: 2.1em;
+            font-size: 1.8em; /* הקטנה קלה לקומפקטיות */
             font-weight: 900;
             color: var(--primary-red);
-            margin: 4px 0;
+            margin: 2px 0;
             letter-spacing: -0.5px;
             line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 1.05em;
+            font-size: 0.95em;
             color: #8c4320;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
 
-        /* --- שינוי 4: DASHBOARD & LIVE TICKER --- */
         .dashboard-stats {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin: 12px 0;
-            font-size: 0.88em;
+            gap: 10px;
+            margin: 6px 0;
+            font-size: 0.82em;
             font-weight: bold;
             color: #8c4320;
         }
@@ -110,7 +109,7 @@
         .stat-badge {
             background: #fbf0d9;
             border: 1px solid #d9be93;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 8px;
         }
 
@@ -119,8 +118,8 @@
             overflow: hidden;
             background: rgba(168, 40, 40, 0.05);
             border-radius: 8px;
-            padding: 6px 0;
-            margin-top: 10px;
+            padding: 4px 0;
+            margin-top: 6px;
             border: 1px dashed #d9be93;
         }
 
@@ -130,7 +129,7 @@
             padding-right: 100%;
             animation: ticker 25s linear infinite;
             color: #8c4320;
-            font-size: 0.85em;
+            font-size: 0.82em;
             font-weight: bold;
         }
 
@@ -144,32 +143,33 @@
             justify-content: center;
             gap: 6px;
             flex-wrap: wrap;
-            margin-top: 10px;
+            margin-top: 6px;
         }
 
         .hero-tag {
             background: #fdf3e3;
             border: 1px solid #d9be93;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 10px;
-            font-size: 0.78em;
+            font-size: 0.75em;
             font-family: monospace;
             font-weight: bold;
             color: #8c4320;
         }
 
-        /* האוואטר הראשי */
+        /* האוואטר הראשי - גודל מותאם */
         .avatar-main-container {
             display: flex;
             justify-content: center;
             align-items: center;
             margin: 0 auto;
+            flex-shrink: 0;
         }
 
         .avatar-main-link {
             display: block;
-            width: 140px;
-            height: 140px;
+            width: 110px;
+            height: 110px;
             transition: transform 0.3s ease;
         }
 
@@ -183,31 +183,31 @@
             object-fit: contain;
         }
 
-        /* --- שינוי 2 & 3: CONTROL PANEL (חיפוש טרמינל + רולטה) --- */
+        /* --- CONTROL PANEL (חיפוש, רולטה ופילטרים) --- */
         .controls-wrapper {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto 25px auto;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
             align-items: center;
         }
 
         .terminal-search-box {
             width: 100%;
-            max-width: 600px;
+            max-width: 650px;
             position: relative;
         }
 
         .terminal-input {
             width: 100%;
-            padding: 12px 45px 12px 15px;
+            padding: 10px 45px 10px 15px;
             background: #2b2b2b;
             color: #00ff66;
             border: 2px solid #a82828;
             border-radius: 12px;
             font-family: monospace;
-            font-size: 0.95em;
+            font-size: 0.9em;
             box-sizing: border-box;
             box-shadow: 0 4px 12px rgba(0,0,0,0.15);
             outline: none;
@@ -238,7 +238,7 @@
             background: linear-gradient(135deg, #e6a100, #a82828);
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 8px 18px;
             border-radius: 20px;
             font-weight: bold;
             cursor: pointer;
@@ -255,18 +255,19 @@
         .filter-buttons {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
 
         .btn {
-            padding: 10px 22px;
+            padding: 8px 18px;
             border: 1px solid #d9be93;
             background-color: #fdf8eb;
             color: #8c4320;
             border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
+            font-size: 0.9em;
             transition: all 0.3s;
         }
 
@@ -347,7 +348,7 @@
             color: #8c4320;
         }
 
-        /* --- שינוי 5: אוואטרים צפים + בועות דיבור דינמיות --- */
+        /* --- אוואטרים צפים + בועות דיבור --- */
         .floating-avatars-container {
             position: fixed;
             bottom: 25px;
@@ -362,10 +363,9 @@
             position: relative;
         }
 
-        /* תיקון הבועית שנפתחת ימינה */
         .speech-bubble {
             position: absolute;
-            left: 75px; /* פותח את הבועית ימינה במקום שמאלה */
+            left: 75px;
             top: 50%;
             transform: translateY(-50%);
             background: white;
@@ -382,18 +382,16 @@
             transition: opacity 0.3s;
         }
 
-        /* כיוון המשולש שמצביע אל הבוט */
         .speech-bubble::after {
             content: '';
             position: absolute;
-            right: 100%; /* החץ מצביע שמאלה לכיוון האוואטר */
+            right: 100%;
             top: 50%;
             transform: translateY(-50%);
             border-width: 6px;
             border-style: solid;
             border-color: transparent white transparent transparent;
         }
-
 
         .floating-avatar {
             width: 65px;
@@ -420,16 +418,16 @@
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
-                <h1 class="hero-title">פורטל אתרי לימוד<br>קבוצות סהר תקשוב</h1>
+                <h1 class="hero-title">פורטל אתרי לימוד - קבוצות סהר תקשוב</h1>
                 <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
                 
-                <!-- Dashboard Stats (שינוי 4) -->
+                <!-- Dashboard Stats -->
                 <div class="dashboard-stats">
                     <span class="stat-badge" id="siteCountBadge">🔗 טוען משאבים...</span>
                     <span class="stat-badge">🤖 2 בוטים זמינים</span>
                 </div>
 
-                <!-- Ticker בר מתחלף (שינוי 4) -->
+                <!-- Ticker בר מתחלף -->
                 <div class="ticker-wrap">
                     <div class="ticker-move">
                         💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע | עקוב אחר התיוגים בכרטיסיות
@@ -451,7 +449,7 @@
         </div>
     </div>
 
-    <!-- אזור בקרה: חיפוש טרמינל, רולטה ופילטרים (שינויים 2 + 3) -->
+    <!-- אזור בקרה: חיפוש טרמינל, רולטה ופילטרים -->
     <div class="controls-wrapper">
         <div class="terminal-search-box">
             <span class="terminal-icon">&gt;_</span>
@@ -476,7 +474,7 @@
         <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
     </div>
 
-    <!-- אוואטרים צפים בצד שמאל למטה + בועות דיבור (שינוי 5) -->
+    <!-- אוואטרים צפים בצד שמאל למטה + בועות דיבור -->
     <div class="floating-avatars-container">
         <div class="floating-avatar-wrapper">
             <div class="speech-bubble" id="gfxBubble">תקוע בגרפיקה? תשאל אותי! 🎨</div>
@@ -537,7 +535,6 @@
                     grid.innerHTML += cardHtml;
                 }
 
-                // עדכון ה-Dashboard בסטטיסטיקה
                 document.getElementById('siteCountBadge').innerText = `📚 ${siteCount} משאבי לימוד`;
 
                 filterSelection(currentFilter);
@@ -573,7 +570,6 @@
             return r;
         }
 
-        /* --- שינוי 2: לוגיקת חיפוש בטרמינל --- */
         function handleSearch() {
             const query = document.getElementById('terminalSearch').value.toLowerCase();
             let cards = document.getElementsByClassName("card");
@@ -605,15 +601,13 @@
                 }
             }
 
-            handleSearch(); // מפעיל מחדש את הסינון יחד עם החיפוש
+            handleSearch();
         }
 
-        /* --- שינוי 3: רולטת משימה אקראית --- */
         function triggerRoulette() {
             let visibleCards = Array.from(document.querySelectorAll('.card:not(.hide)'));
             if (visibleCards.length === 0) return;
 
-            // הסרת הדגשות קודמות
             visibleCards.forEach(c => c.classList.remove('highlight'));
 
             let rolls = 0;
@@ -629,7 +623,6 @@
                 if (rolls < maxRolls) {
                     setTimeout(cycle, speed);
                 } else {
-                    // גלילה חלקה אל הלהיט הנבחר
                     visibleCards[randomIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
@@ -637,7 +630,6 @@
             cycle();
         }
 
-        /* --- שינוי 5: בועות דיבור מתחלפות לבוטים --- */
         const gfxPhrases = [
             "תקוע בגרפיקה? תשאל אותי! 🎨",
             "רוצה טיפ ב-Photoshop? 🖌️",
