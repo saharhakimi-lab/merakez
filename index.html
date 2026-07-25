@@ -26,11 +26,11 @@
             background-color: #faefd9;
             border: 1px solid #ebd9b8;
             border-radius: 20px;
-            padding: 20px 15px;
-            max-width: 850px;
+            padding: 25px 20px;
+            max-width: 900px;
             margin: 0 auto 25px auto;
             position: relative;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 20px rgba(168, 40, 40, 0.05);
         }
 
         .top-bar {
@@ -58,12 +58,12 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap-reverse;
-            gap: 15px;
+            gap: 20px;
         }
 
         .hero-text {
             flex: 1;
-            min-width: 250px;
+            min-width: 280px;
             text-align: center;
         }
 
@@ -71,27 +71,28 @@
             display: inline-block;
             background: #fdf3e3;
             border: 1px solid #e0cda9;
-            padding: 4px 12px;
+            padding: 4px 14px;
             border-radius: 15px;
-            font-size: 0.8em;
+            font-size: 0.85em;
             color: var(--primary-red);
             font-weight: bold;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         .hero-title {
-            font-size: 2.2em;
+            font-size: 2.1em;
             font-weight: 900;
             color: var(--primary-red);
             margin: 4px 0;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
         }
 
         .hero-subtitle {
-            font-size: 1em;
+            font-size: 1.05em;
             color: #8c4320;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
 
         .hero-tags {
@@ -104,37 +105,37 @@
         .hero-tag {
             background: #fdf3e3;
             border: 1px solid #d9be93;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 10px;
-            font-size: 0.75em;
+            font-size: 0.78em;
             font-family: monospace;
             font-weight: bold;
             color: #8c4320;
         }
 
-        /* אוואטר ראשי בכותרת - רקע שמנת זהה ל-Hero */
+        /* --- האוואטר החדש: ללא מסגרות או אלמנטים נוספים --- */
         .avatar-main-container {
-            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             margin: 0 auto;
         }
 
         .avatar-main-link {
             display: block;
-            width: 110px;
-            height: 110px;
-            background-color: #faefd9; /* צבע השמנת של ה-Hero */
-            border-radius: 50%;
-            transition: transform 0.3s;
-            overflow: hidden;
+            width: 140px;
+            height: 140px;
+            transition: transform 0.3s ease;
         }
 
-        .avatar-main-link:hover { transform: scale(1.05); }
+        .avatar-main-link:hover { 
+            transform: scale(1.05);
+        }
 
         .avatar-main-link img {
             width: 100%;
             height: 100%;
             object-fit: contain;
-            background-color: #faefd9; /* מבטיח רקע שמנת גם בתוך התמונה */
         }
 
         /* סרגל סינון */
@@ -224,7 +225,7 @@
             color: #8c4320;
         }
 
-        /* סליידר/מיקום האוואטרים הצפים למטה */
+        /* אוואטרים צפים למטה */
         .floating-avatars-container {
             position: fixed;
             bottom: 25px;
@@ -260,7 +261,7 @@
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
-                <h1 class="hero-title">פורטל אתרי לימוד</h1>
+                <h1 class="hero-title">פורטל אתרי לימוד<br>קבוצות סהר תקשוב</h1>
                 <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
                 
                 <div class="hero-tags">
@@ -270,10 +271,10 @@
                 </div>
             </div>
 
-            <!-- אוואטר ראשי בכותרת עם רקע שמנת מושלם -->
             <div class="avatar-main-container">
-                <div class="avatar-main-link" title="תמונת ראשי">
-                    <img src="https://drive.google.com/thumbnail?id=1rMyIl_h_33STiLZtmA4-tKc-6mN_I_45&sz=w500" alt="תמונת כותרת">
+                <div class="avatar-main-link" title="לוגו סהר תקשוב">
+                    <!-- קישור תמונה ישיר לאוואטר החדש -->
+                    <img src="https://drive.google.com/thumbnail?id=1eVsO38Du8cndWqpQdZWL8w_nyQcTk1DR&sz=w500" alt="אוואטר כותרת">
                 </div>
             </div>
         </div>
@@ -287,7 +288,7 @@
         <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
     </div>
 
-    <!-- רשת הכרטיסיות (תתמלא אוטומטית מ-Google Sheets) -->
+    <!-- רשת הכרטיסיות -->
     <div class="site-grid" id="siteGrid">
         <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
     </div>
