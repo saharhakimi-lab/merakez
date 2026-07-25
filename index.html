@@ -1,0 +1,453 @@
+﻿<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אקדמיית האחוואנים - פורטל משאבים</title>
+    <style>
+        :root {
+            --bg-color: #fdf8eb;
+            --card-bg: #ffffff;
+            --primary-red: #a82828;
+            --text-dark: #333333;
+            --accent-gold: #e6a100;
+        }
+
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            color: var(--text-dark);
+        }
+
+
+        /* עיצוב ה-HERO */
+        .hero-container {
+            background-color: #faefd9;
+            border: 1px solid #ebd9b8;
+            border-radius: 20px;
+            padding: 30px 20px;
+            max-width: 1000px;
+            margin: 0 auto 30px auto;
+            position: relative;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+        }
+
+
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: monospace;
+            color: #b87a4d;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+            direction: ltr;
+        }
+
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            background-color: #e58b8b;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap-reverse;
+            gap: 20px;
+        }
+
+
+        .hero-text {
+            flex: 1;
+            min-width: 280px;
+            text-align: center;
+        }
+
+
+        .hero-pill-top {
+            display: inline-block;
+            background: #fdf3e3;
+            border: 1px solid #e0cda9;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+
+        .hero-title {
+            font-size: 2.8em;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin: 5px 0;
+            letter-spacing: -1px;
+        }
+
+
+        .hero-subtitle {
+            font-size: 1.1em;
+            color: #8c4320;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+
+        .hero-tag {
+            background: #fdf3e3;
+            border: 1px solid #d9be93;
+            padding: 4px 12px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-family: monospace;
+            font-weight: bold;
+            color: #8c4320;
+        }
+
+
+        /* אוואטר ראשי */
+        .avatar-main-container {
+            position: relative;
+            margin: 0 auto;
+        }
+
+
+        .avatar-main-link {
+            display: block;
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-red);
+            padding: 3px;
+            box-shadow: 0 0 15px rgba(168, 40, 40, 0.2);
+            transition: transform 0.3s;
+            overflow: hidden;
+            background: #fff;
+        }
+
+
+        .avatar-main-link:hover { transform: scale(1.05); }
+
+
+        .avatar-main-link img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+
+        /* סרגל סינון */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+
+        .btn {
+            padding: 10px 22px;
+            border: 1px solid #d9be93;
+            background-color: #fdf8eb;
+            color: #8c4320;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+
+        .btn:hover, .btn.active {
+            background-color: var(--primary-red);
+            color: white;
+            border-color: var(--primary-red);
+        }
+
+
+        /* רשת הכרטיסיות */
+        .site-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border: 1px solid #eee;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s;
+        }
+
+
+        .card:hover { transform: translateY(-4px); }
+        .card h3 { margin-top: 0; color: var(--primary-red); }
+        .card p { color: #666; font-size: 0.9em; }
+
+
+        .tags {
+            margin: 10px 0;
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+
+        .tag {
+            background: #fdf3e3;
+            font-size: 0.75em;
+            padding: 3px 8px;
+            border-radius: 12px;
+            color: #8c4320;
+        }
+
+
+        .card a.site-link {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-red);
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+
+        .hide { display: none !important; }
+
+
+        .loading-text {
+            text-align: center;
+            grid-column: 1 / -1;
+            font-size: 1.2em;
+            color: #8c4320;
+        }
+
+
+        /* אוואטר צף */
+        .floating-avatar {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 3px solid var(--primary-red);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+            z-index: 1000;
+            background: white;
+            transition: transform 0.3s;
+        }
+
+
+        .floating-avatar:hover { transform: scale(1.1); }
+        .floating-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    </style>
+</head>
+<body>
+
+
+    <div class="hero-container">
+        <div class="top-bar">
+            <span>10.0.30.0/24 // academy.tikshuv.local // session: active <span class="status-dot"></span></span>
+        </div>
+
+
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
+                <h1 class="hero-title">פורטל אתרי לימוד</h1>
+                <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
+                
+                <div class="hero-tags">
+                    <span class="hero-tag">גרפיקה</span>
+                    <span class="hero-tag">תשתיות תקשורת</span>
+                    <span class="hero-tag">כיתות י'-י"א</span>
+                </div>
+            </div>
+
+
+            <div class="avatar-main-container">
+                <a href="https://gemini.google.com/gem/182jqjh6fxGeiMJ3R2si6dovgXIugR93N?usp=sharing" target="_blank" class="avatar-main-link" title="פנה לבוט גרפיקה">
+                    <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w500" alt="בוט גרפיקה">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- כפתורי סינון -->
+    <div class="filter-buttons">
+        <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
+        <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - יישומי גרפיקה</button>
+        <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תשתיות תקשורת</button>
+        <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
+    </div>
+
+
+    <!-- רשת הכרטיסיות (תתמלא אוטומטית מ-Google Sheets) -->
+    <div class="site-grid" id="siteGrid">
+        <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
+    </div>
+
+
+    <!-- אוואטר צף -->
+    <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט תקשורת">
+        <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="בוט תקשורת">
+    </a>
+
+
+    <script>
+        // הדבק כאן את קישור ה-CSV שקיבלת מגוגל שיטס בשלב 2!
+        const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHUPmbbiSkeoRT5nQ21yhwIeUcAxptQ390F4FlLGWL7PJ4i1KmzjzMgJiYwcj1PfwYtAtSJzczet36/pub?output=csv';
+
+
+        let currentFilter = 'all';
+
+
+        // פונקציה לטעינת הנתונים מגוגל שיטס
+        async function fetchSites() {
+            try {
+                const response = await fetch(SHEET_CSV_URL);
+                const data = await response.text();
+                
+                const rows = parseCSV(data);
+                const grid = document.getElementById('siteGrid');
+                grid.innerHTML = ''; // ניקוי הודעת הטעינה
+
+
+                // דילוג על השורה הראשונה (כותרות)
+                for (let i = 1; i < rows.length; i++) {
+                    const [title, description, url, classes, tags] = rows[i];
+
+
+                    if (!title || !url) continue; // דילוג על שורות ריקות
+
+
+                    // יצירת התגיות (משורשרות עם פסיק)
+                    let tagsHtml = '';
+                    if (tags) {
+                        const tagList = tags.split(',');
+                        tagList.forEach(t => {
+                            tagsHtml += `<span class="tag">${t.trim()}</span>`;
+                        });
+                    }
+
+
+                    // יצירת הכרטיסייה
+                    const cardHtml = `
+                        <div class="card ${classes ? classes.trim() : ''}">
+                            <div>
+                                <h3>${title.trim()}</h3>
+                                <p>${description ? description.trim() : ''}</p>
+                                <div class="tags">${tagsHtml}</div>
+                            </div>
+                            <a href="${url.trim()}" target="_blank" class="site-link">כניסה לאתר</a>
+                        </div>
+                    `;
+                    grid.innerHTML += cardHtml;
+                }
+
+
+                // החלת הסינון הנוכחי
+                filterSelection(currentFilter);
+
+
+            } catch (error) {
+                console.error("שגיאה שטעינת הגיליון:", error);
+                document.getElementById('siteGrid').innerHTML = '<div class="loading-text">אירעה שגיאה בטעינת הנתונים. וודא שהקישור של Google Sheets תקין.</div>';
+            }
+        }
+
+
+        // פארסר פשוט ל-CSV
+        function parseCSV(text) {
+            let p = '', c = '', r = [];
+            let q = false;
+            let row = [''];
+            for (let i = 0; i < text.length; i++) {
+                c = text[i];
+                p = text[i - 1];
+                if (c === '"') {
+                    if (q && text[i + 1] === '"') { row[row.length - 1] += '"'; i++; }
+                    else { q = !q; }
+                } else if (c === ',' && !q) {
+                    row.push('');
+                } else if ((c === '\r' || c === '\n') && !q) {
+                    if (p !== '\r' || c !== '\n') {
+                        r.push(row);
+                        row = [''];
+                    }
+                } else {
+                    row[row.length - 1] += c;
+                }
+            }
+            if (row.length > 1 || row[0] !== '') r.push(row);
+            return r;
+        }
+
+
+        // פונקציית סינון
+        function filterSelection(category) {
+            currentFilter = category;
+            let cards = document.getElementsByClassName("card");
+            let buttons = document.getElementsByClassName("btn");
+
+
+            for (let btn of buttons) {
+                btn.classList.remove("active");
+                if (btn.getAttribute('onclick').includes(`'${category}'`)) {
+                    btn.classList.add("active");
+                }
+            }
+
+
+            for (let i = 0; i < cards.length; i++) {
+                if (category === "all") {
+                    cards[i].classList.remove("hide");
+                } else {
+                    if (cards[i].classList.contains(category)) {
+                        cards[i].classList.remove("hide");
+                    } else {
+                        cards[i].classList.add("hide");
+                    }
+                }
+            }
+        }
+
+
+        // הפעלת טעינת הנתונים בעת טעינת הדף
+        window.onload = fetchSites;
+    </script>
+</body>
+</html>
