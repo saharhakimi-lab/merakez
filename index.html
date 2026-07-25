@@ -47,10 +47,11 @@
         .status-dot {
             height: 8px;
             width: 8px;
-            background-color: #e58b8b;
+            background-color: #4CAF50;
             border-radius: 50%;
             display: inline-block;
             margin-left: 5px;
+            box-shadow: 0 0 8px #4CAF50;
         }
 
         .hero-content {
@@ -95,11 +96,55 @@
             margin-bottom: 12px;
         }
 
+        /* --- שינוי 4: DASHBOARD & LIVE TICKER --- */
+        .dashboard-stats {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 12px 0;
+            font-size: 0.88em;
+            font-weight: bold;
+            color: #8c4320;
+        }
+
+        .stat-badge {
+            background: #fbf0d9;
+            border: 1px solid #d9be93;
+            padding: 4px 12px;
+            border-radius: 8px;
+        }
+
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: rgba(168, 40, 40, 0.05);
+            border-radius: 8px;
+            padding: 6px 0;
+            margin-top: 10px;
+            border: 1px dashed #d9be93;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 25s linear infinite;
+            color: #8c4320;
+            font-size: 0.85em;
+            font-weight: bold;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); }
+        }
+
         .hero-tags {
             display: flex;
             justify-content: center;
             gap: 6px;
             flex-wrap: wrap;
+            margin-top: 10px;
         }
 
         .hero-tag {
@@ -113,7 +158,7 @@
             color: #8c4320;
         }
 
-        /* --- האוואטר החדש: ללא מסגרות או אלמנטים נוספים --- */
+        /* האוואטר הראשי */
         .avatar-main-container {
             display: flex;
             justify-content: center;
@@ -138,13 +183,80 @@
             object-fit: contain;
         }
 
+        /* --- שינוי 2 & 3: CONTROL PANEL (חיפוש טרמינל + רולטה) --- */
+        .controls-wrapper {
+            max-width: 900px;
+            margin: 0 auto 25px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .terminal-search-box {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .terminal-input {
+            width: 100%;
+            padding: 12px 45px 12px 15px;
+            background: #2b2b2b;
+            color: #00ff66;
+            border: 2px solid #a82828;
+            border-radius: 12px;
+            font-family: monospace;
+            font-size: 0.95em;
+            box-sizing: border-box;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            outline: none;
+        }
+
+        .terminal-input::placeholder {
+            color: #888;
+        }
+
+        .terminal-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #00ff66;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .action-bar {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn-roulette {
+            background: linear-gradient(135deg, #e6a100, #a82828);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-roulette:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+        }
+
         /* סרגל סינון */
         .filter-buttons {
             display: flex;
             justify-content: center;
             gap: 10px;
             flex-wrap: wrap;
-            margin-bottom: 30px;
         }
 
         .btn {
@@ -182,10 +294,20 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
         }
 
-        .card:hover { transform: translateY(-4px); }
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 8px 20px rgba(168, 40, 40, 0.12);
+        }
+
+        .card.highlight {
+            border: 2px solid var(--accent-gold) !important;
+            box-shadow: 0 0 20px rgba(230, 161, 0, 0.6) !important;
+            transform: scale(1.03);
+        }
+
         .card h3 { margin-top: 0; color: var(--primary-red); }
         .card p { color: #666; font-size: 0.9em; }
 
@@ -225,15 +347,49 @@
             color: #8c4320;
         }
 
-        /* אוואטרים צפים למטה */
+        /* --- שינוי 5: אוואטרים צפים + בועות דיבור דינמיות --- */
         .floating-avatars-container {
             position: fixed;
             bottom: 25px;
             left: 25px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 18px;
             z-index: 1000;
+        }
+
+        .floating-avatar-wrapper {
+            position: relative;
+        }
+
+        .speech-bubble {
+            position: absolute;
+            right: 75px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: white;
+            color: var(--text-dark);
+            padding: 8px 12px;
+            border-radius: 12px;
+            font-size: 0.8em;
+            font-weight: bold;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            border: 1px solid #ebd9b8;
+            pointer-events: none;
+            opacity: 0.95;
+            transition: opacity 0.3s;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent transparent white;
         }
 
         .floating-avatar {
@@ -264,6 +420,19 @@
                 <h1 class="hero-title">פורטל אתרי לימוד<br>קבוצות סהר תקשוב</h1>
                 <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
                 
+                <!-- Dashboard Stats (שינוי 4) -->
+                <div class="dashboard-stats">
+                    <span class="stat-badge" id="siteCountBadge">🔗 טוען משאבים...</span>
+                    <span class="stat-badge">🤖 2 בוטים זמינים</span>
+                </div>
+
+                <!-- Ticker בר מתחלף (שינוי 4) -->
+                <div class="ticker-wrap">
+                    <div class="ticker-move">
+                        💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע | עקוב אחר התיוגים בכרטיסיות
+                    </div>
+                </div>
+
                 <div class="hero-tags">
                     <span class="hero-tag">גרפיקה</span>
                     <span class="hero-tag">תשתיות תקשורת</span>
@@ -273,19 +442,30 @@
 
             <div class="avatar-main-container">
                 <div class="avatar-main-link" title="לוגו סהר תקשוב">
-                    <!-- קישור תמונה ישיר לאוואטר החדש -->
                     <img src="https://drive.google.com/thumbnail?id=1eVsO38Du8cndWqpQdZWL8w_nyQcTk1DR&sz=w500" alt="אוואטר כותרת">
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- כפתורי סינון -->
-    <div class="filter-buttons">
-        <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
-        <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - יישומי גרפיקה</button>
-        <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תשתיות תקשורת</button>
-        <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
+    <!-- אזור בקרה: חיפוש טרמינל, רולטה ופילטרים (שינויים 2 + 3) -->
+    <div class="controls-wrapper">
+        <div class="terminal-search-box">
+            <span class="terminal-icon">&gt;_</span>
+            <input type="text" id="terminalSearch" class="terminal-input" placeholder="חפש לפי נושא, תגית, או שם אתר..." oninput="handleSearch()">
+        </div>
+
+        <div class="action-bar">
+            <button class="btn-roulette" onclick="triggerRoulette()">🎲 שגר אותי למשימה אקראית!</button>
+        </div>
+
+        <!-- כפתורי סינון -->
+        <div class="filter-buttons">
+            <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
+            <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - יישומי גרפיקה</button>
+            <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תשתיות תקשורת</button>
+            <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
+        </div>
     </div>
 
     <!-- רשת הכרטיסיות -->
@@ -293,15 +473,21 @@
         <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
     </div>
 
-    <!-- אוואטרים צפים בצד שמאל למטה -->
+    <!-- אוואטרים צפים בצד שמאל למטה + בועות דיבור (שינוי 5) -->
     <div class="floating-avatars-container">
-        <a href="https://gemini.google.com/gem/182jqjh6fxGeiMJ3R2si6dovgXIugR93N?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט גרפיקה">
-            <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w500" alt="בוט גרפיקה">
-        </a>
+        <div class="floating-avatar-wrapper">
+            <div class="speech-bubble" id="gfxBubble">תקוע בגרפיקה? תשאל אותי! 🎨</div>
+            <a href="https://gemini.google.com/gem/182jqjh6fxGeiMJ3R2si6dovgXIugR93N?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט גרפיקה">
+                <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w500" alt="בוט גרפיקה">
+            </a>
+        </div>
 
-        <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט תקשורת">
-            <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="בוט תקשורת">
-        </a>
+        <div class="floating-avatar-wrapper">
+            <div class="speech-bubble" id="netBubble">מסתבך ברשתות? בוא נפתור! 🌐</div>
+            <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט תקשורת">
+                <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="בוט תקשורת">
+            </a>
+        </div>
     </div>
 
     <script>
@@ -318,10 +504,14 @@
                 const grid = document.getElementById('siteGrid');
                 grid.innerHTML = '';
 
+                let siteCount = 0;
+
                 for (let i = 1; i < rows.length; i++) {
                     const [title, description, url, classes, tags] = rows[i];
 
                     if (!title || !url) continue;
+
+                    siteCount++;
 
                     let tagsHtml = '';
                     if (tags) {
@@ -332,7 +522,7 @@
                     }
 
                     const cardHtml = `
-                        <div class="card ${classes ? classes.trim() : ''}">
+                        <div class="card ${classes ? classes.trim() : ''}" data-title="${title.trim()}" data-desc="${description ? description.trim() : ''}" data-tags="${tags ? tags.trim() : ''}">
                             <div>
                                 <h3>${title.trim()}</h3>
                                 <p>${description ? description.trim() : ''}</p>
@@ -344,10 +534,13 @@
                     grid.innerHTML += cardHtml;
                 }
 
+                // עדכון ה-Dashboard בסטטיסטיקה
+                document.getElementById('siteCountBadge').innerText = `📚 ${siteCount} משאבי לימוד`;
+
                 filterSelection(currentFilter);
 
             } catch (error) {
-                console.error("שגיאה שטעינת הגיליון:", error);
+                console.error("שגיאה בטעינת הגיליון:", error);
                 document.getElementById('siteGrid').innerHTML = '<div class="loading-text">אירעה שגיאה בטעינת הנתונים. וודא שהקישור של Google Sheets תקין.</div>';
             }
         }
@@ -377,9 +570,29 @@
             return r;
         }
 
+        /* --- שינוי 2: לוגיקת חיפוש בטרמינל --- */
+        function handleSearch() {
+            const query = document.getElementById('terminalSearch').value.toLowerCase();
+            let cards = document.getElementsByClassName("card");
+
+            for (let i = 0; i < cards.length; i++) {
+                const title = cards[i].getAttribute('data-title').toLowerCase();
+                const desc = cards[i].getAttribute('data-desc').toLowerCase();
+                const tags = cards[i].getAttribute('data-tags').toLowerCase();
+
+                const matchesQuery = title.includes(query) || desc.includes(query) || tags.includes(query);
+                const matchesCategory = currentFilter === 'all' || cards[i].classList.contains(currentFilter);
+
+                if (matchesQuery && matchesCategory) {
+                    cards[i].classList.remove("hide");
+                } else {
+                    cards[i].classList.add("hide");
+                }
+            }
+        }
+
         function filterSelection(category) {
             currentFilter = category;
-            let cards = document.getElementsByClassName("card");
             let buttons = document.getElementsByClassName("btn");
 
             for (let btn of buttons) {
@@ -389,18 +602,61 @@
                 }
             }
 
-            for (let i = 0; i < cards.length; i++) {
-                if (category === "all") {
-                    cards[i].classList.remove("hide");
+            handleSearch(); // מפעיל מחדש את הסינון יחד עם החיפוש
+        }
+
+        /* --- שינוי 3: רולטת משימה אקראית --- */
+        function triggerRoulette() {
+            let visibleCards = Array.from(document.querySelectorAll('.card:not(.hide)'));
+            if (visibleCards.length === 0) return;
+
+            // הסרת הדגשות קודמות
+            visibleCards.forEach(c => c.classList.remove('highlight'));
+
+            let rolls = 0;
+            let maxRolls = 12;
+            let speed = 80;
+
+            function cycle() {
+                let randomIndex = Math.floor(Math.random() * visibleCards.length);
+                visibleCards.forEach(c => c.classList.remove('highlight'));
+                visibleCards[randomIndex].classList.add('highlight');
+
+                rolls++;
+                if (rolls < maxRolls) {
+                    setTimeout(cycle, speed);
                 } else {
-                    if (cards[i].classList.contains(category)) {
-                        cards[i].classList.remove("hide");
-                    } else {
-                        cards[i].classList.add("hide");
-                    }
+                    // גלילה חלקה אל הלהיט הנבחר
+                    visibleCards[randomIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
                 }
             }
+
+            cycle();
         }
+
+        /* --- שינוי 5: בועות דיבור מתחלפות לבוטים --- */
+        const gfxPhrases = [
+            "תקוע בגרפיקה? תשאל אותי! 🎨",
+            "רוצה טיפ ב-Photoshop? 🖌️",
+            "צריך עזרה בעיצוב? אני פה! ✨"
+        ];
+
+        const netPhrases = [
+            "מסתבך ברשתות? בוא נפתור! 🌐",
+            "שאלות על Subnetting? דבר אליי 🖥️",
+            "רוצה לתרגל פקודות CISCO? 🚀"
+        ];
+
+        let gfxIndex = 0;
+        let netIndex = 0;
+
+        setInterval(() => {
+            gfxIndex = (gfxIndex + 1) % gfxPhrases.length;
+            netIndex = (netIndex + 1) % netPhrases.length;
+            
+            document.getElementById('gfxBubble').innerText = gfxPhrases[gfxIndex];
+            document.getElementById('netBubble').innerText = netPhrases[netIndex];
+        }, 6000);
 
         window.onload = fetchSites;
     </script>
