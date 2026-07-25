@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -13,7 +13,6 @@
             --accent-gold: #e6a100;
         }
 
-
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background-color: var(--bg-color);
@@ -22,19 +21,17 @@
             color: var(--text-dark);
         }
 
-
         /* עיצוב ה-HERO */
         .hero-container {
             background-color: #faefd9;
             border: 1px solid #ebd9b8;
             border-radius: 20px;
-            padding: 30px 20px;
-            max-width: 1000px;
-            margin: 0 auto 30px auto;
+            padding: 20px 15px;
+            max-width: 850px;
+            margin: 0 auto 25px auto;
             position: relative;
             box-shadow: 0 4px 15px rgba(0,0,0,0.03);
         }
-
 
         .top-bar {
             display: flex;
@@ -42,11 +39,10 @@
             align-items: center;
             font-family: monospace;
             color: #b87a4d;
-            font-size: 0.9em;
-            margin-bottom: 20px;
+            font-size: 0.85em;
+            margin-bottom: 15px;
             direction: ltr;
         }
-
 
         .status-dot {
             height: 8px;
@@ -57,104 +53,89 @@
             margin-left: 5px;
         }
 
-
         .hero-content {
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap-reverse;
-            gap: 20px;
+            gap: 15px;
         }
-
 
         .hero-text {
             flex: 1;
-            min-width: 280px;
+            min-width: 250px;
             text-align: center;
         }
-
 
         .hero-pill-top {
             display: inline-block;
             background: #fdf3e3;
             border: 1px solid #e0cda9;
-            padding: 5px 15px;
+            padding: 4px 12px;
             border-radius: 15px;
-            font-size: 0.85em;
+            font-size: 0.8em;
             color: var(--primary-red);
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
-
         .hero-title {
-            font-size: 2.8em;
+            font-size: 2.2em;
             font-weight: 900;
             color: var(--primary-red);
-            margin: 5px 0;
+            margin: 4px 0;
             letter-spacing: -1px;
         }
 
-
         .hero-subtitle {
-            font-size: 1.1em;
+            font-size: 1em;
             color: #8c4320;
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-
 
         .hero-tags {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
-
 
         .hero-tag {
             background: #fdf3e3;
             border: 1px solid #d9be93;
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 10px;
-            font-size: 0.8em;
+            font-size: 0.75em;
             font-family: monospace;
             font-weight: bold;
             color: #8c4320;
         }
 
-
-        /* אוואטר ראשי */
+        /* אוואטר ראשי בכותרת - רקע שמנת זהה ל-Hero */
         .avatar-main-container {
             position: relative;
             margin: 0 auto;
         }
 
-
         .avatar-main-link {
             display: block;
-            width: 140px;
-            height: 140px;
+            width: 110px;
+            height: 110px;
+            background-color: #faefd9; /* צבע השמנת של ה-Hero */
             border-radius: 50%;
-            border: 4px solid var(--primary-red);
-            padding: 3px;
-            box-shadow: 0 0 15px rgba(168, 40, 40, 0.2);
             transition: transform 0.3s;
             overflow: hidden;
-            background: #fff;
         }
 
-
         .avatar-main-link:hover { transform: scale(1.05); }
-
 
         .avatar-main-link img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
+            object-fit: contain;
+            background-color: #faefd9; /* מבטיח רקע שמנת גם בתוך התמונה */
         }
-
 
         /* סרגל סינון */
         .filter-buttons {
@@ -164,7 +145,6 @@
             flex-wrap: wrap;
             margin-bottom: 30px;
         }
-
 
         .btn {
             padding: 10px 22px;
@@ -177,13 +157,11 @@
             transition: all 0.3s;
         }
 
-
         .btn:hover, .btn.active {
             background-color: var(--primary-red);
             color: white;
             border-color: var(--primary-red);
         }
-
 
         /* רשת הכרטיסיות */
         .site-grid {
@@ -193,7 +171,6 @@
             max-width: 1000px;
             margin: 0 auto;
         }
-
 
         .card {
             background: var(--card-bg);
@@ -207,11 +184,9 @@
             transition: transform 0.2s;
         }
 
-
         .card:hover { transform: translateY(-4px); }
         .card h3 { margin-top: 0; color: var(--primary-red); }
         .card p { color: #666; font-size: 0.9em; }
-
 
         .tags {
             margin: 10px 0;
@@ -220,7 +195,6 @@
             flex-wrap: wrap;
         }
 
-
         .tag {
             background: #fdf3e3;
             font-size: 0.75em;
@@ -228,7 +202,6 @@
             border-radius: 12px;
             color: #8c4320;
         }
-
 
         .card a.site-link {
             display: block;
@@ -242,9 +215,7 @@
             margin-top: 10px;
         }
 
-
         .hide { display: none !important; }
-
 
         .loading-text {
             text-align: center;
@@ -253,22 +224,27 @@
             color: #8c4320;
         }
 
-
-        /* אוואטר צף */
-        .floating-avatar {
+        /* סליידר/מיקום האוואטרים הצפים למטה */
+        .floating-avatars-container {
             position: fixed;
             bottom: 25px;
             left: 25px;
-            width: 70px;
-            height: 70px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 1000;
+        }
+
+        .floating-avatar {
+            width: 65px;
+            height: 65px;
             border-radius: 50%;
             border: 3px solid var(--primary-red);
             box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-            z-index: 1000;
             background: white;
             transition: transform 0.3s;
+            display: block;
         }
-
 
         .floating-avatar:hover { transform: scale(1.1); }
         .floating-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
@@ -276,12 +252,10 @@
 </head>
 <body>
 
-
     <div class="hero-container">
         <div class="top-bar">
             <span>10.0.30.0/24 // academy.tikshuv.local // session: active <span class="status-dot"></span></span>
         </div>
-
 
         <div class="hero-content">
             <div class="hero-text">
@@ -296,15 +270,14 @@
                 </div>
             </div>
 
-
+            <!-- אוואטר ראשי בכותרת עם רקע שמנת מושלם -->
             <div class="avatar-main-container">
-                <a href="https://gemini.google.com/gem/182jqjh6fxGeiMJ3R2si6dovgXIugR93N?usp=sharing" target="_blank" class="avatar-main-link" title="פנה לבוט גרפיקה">
-                    <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w500" alt="בוט גרפיקה">
-                </a>
+                <div class="avatar-main-link" title="תמונת ראשי">
+                    <img src="https://drive.google.com/thumbnail?id=1rMyIl_h_33STiLZtmA4-tKc-6mN_I_45&sz=w500" alt="תמונת כותרת">
+                </div>
             </div>
         </div>
     </div>
-
 
     <!-- כפתורי סינון -->
     <div class="filter-buttons">
@@ -314,28 +287,27 @@
         <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
     </div>
 
-
     <!-- רשת הכרטיסיות (תתמלא אוטומטית מ-Google Sheets) -->
     <div class="site-grid" id="siteGrid">
         <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
     </div>
 
+    <!-- אוואטרים צפים בצד שמאל למטה -->
+    <div class="floating-avatars-container">
+        <a href="https://gemini.google.com/gem/182jqjh6fxGeiMJ3R2si6dovgXIugR93N?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט גרפיקה">
+            <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w500" alt="בוט גרפיקה">
+        </a>
 
-    <!-- אוואטר צף -->
-    <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט תקשורת">
-        <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="בוט תקשורת">
-    </a>
-
+        <a href="https://gemini.google.com/gem/13FFjtbW5S3yg0EE1qBEQiP8GEMwoepKu?usp=sharing" target="_blank" class="floating-avatar" title="פנה לבוט תקשורת">
+            <img src="https://drive.google.com/thumbnail?id=1fzqv93VKIW_VT8-e1HdJxBmbU2sFnwlb&sz=w500" alt="בוט תקשורת">
+        </a>
+    </div>
 
     <script>
-        // הדבק כאן את קישור ה-CSV שקיבלת מגוגל שיטס בשלב 2!
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHUPmbbiSkeoRT5nQ21yhwIeUcAxptQ390F4FlLGWL7PJ4i1KmzjzMgJiYwcj1PfwYtAtSJzczet36/pub?output=csv';
-
 
         let currentFilter = 'all';
 
-
-        // פונקציה לטעינת הנתונים מגוגל שיטס
         async function fetchSites() {
             try {
                 const response = await fetch(SHEET_CSV_URL);
@@ -343,18 +315,13 @@
                 
                 const rows = parseCSV(data);
                 const grid = document.getElementById('siteGrid');
-                grid.innerHTML = ''; // ניקוי הודעת הטעינה
+                grid.innerHTML = '';
 
-
-                // דילוג על השורה הראשונה (כותרות)
                 for (let i = 1; i < rows.length; i++) {
                     const [title, description, url, classes, tags] = rows[i];
 
+                    if (!title || !url) continue;
 
-                    if (!title || !url) continue; // דילוג על שורות ריקות
-
-
-                    // יצירת התגיות (משורשרות עם פסיק)
                     let tagsHtml = '';
                     if (tags) {
                         const tagList = tags.split(',');
@@ -363,8 +330,6 @@
                         });
                     }
 
-
-                    // יצירת הכרטיסייה
                     const cardHtml = `
                         <div class="card ${classes ? classes.trim() : ''}">
                             <div>
@@ -378,10 +343,7 @@
                     grid.innerHTML += cardHtml;
                 }
 
-
-                // החלת הסינון הנוכחי
                 filterSelection(currentFilter);
-
 
             } catch (error) {
                 console.error("שגיאה שטעינת הגיליון:", error);
@@ -389,8 +351,6 @@
             }
         }
 
-
-        // פארסר פשוט ל-CSV
         function parseCSV(text) {
             let p = '', c = '', r = [];
             let q = false;
@@ -416,13 +376,10 @@
             return r;
         }
 
-
-        // פונקציית סינון
         function filterSelection(category) {
             currentFilter = category;
             let cards = document.getElementsByClassName("card");
             let buttons = document.getElementsByClassName("btn");
-
 
             for (let btn of buttons) {
                 btn.classList.remove("active");
@@ -430,7 +387,6 @@
                     btn.classList.add("active");
                 }
             }
-
 
             for (let i = 0; i < cards.length; i++) {
                 if (category === "all") {
@@ -445,8 +401,6 @@
             }
         }
 
-
-        // הפעלת טעינת הנתונים בעת טעינת הדף
         window.onload = fetchSites;
     </script>
 </body>
