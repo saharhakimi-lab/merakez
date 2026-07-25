@@ -362,14 +362,15 @@
             position: relative;
         }
 
+        /* תיקון הבועית שנפתחת ימינה */
         .speech-bubble {
             position: absolute;
-            right: 75px;
+            left: 75px; /* פותח את הבועית ימינה במקום שמאלה */
             top: 50%;
             transform: translateY(-50%);
             background: white;
             color: var(--text-dark);
-            padding: 8px 12px;
+            padding: 8px 14px;
             border-radius: 12px;
             font-size: 0.8em;
             font-weight: bold;
@@ -381,16 +382,18 @@
             transition: opacity 0.3s;
         }
 
+        /* כיוון המשולש שמצביע אל הבוט */
         .speech-bubble::after {
             content: '';
             position: absolute;
-            left: 100%;
+            right: 100%; /* החץ מצביע שמאלה לכיוון האוואטר */
             top: 50%;
             transform: translateY(-50%);
             border-width: 6px;
             border-style: solid;
-            border-color: transparent transparent transparent white;
+            border-color: transparent white transparent transparent;
         }
+
 
         .floating-avatar {
             width: 65px;
