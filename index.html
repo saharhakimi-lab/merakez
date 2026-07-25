@@ -11,6 +11,7 @@
             --primary-red: #a82828;
             --text-dark: #333333;
             --accent-gold: #e6a100;
+            --purple-border: #7b1fa2; /* סגול חזק לאוואטר */
         }
 
         body {
@@ -21,16 +22,17 @@
             color: var(--text-dark);
         }
 
-        /* --- עיצוב ה-HERO המתוקן (רחב ונמוך יותר) --- */
+        /* --- עיצוב ה-HERO הראשי (קומפקטי, רחב ונמוך) --- */
         .hero-container {
             background-color: #faefd9;
             border: 1px solid #ebd9b8;
             border-radius: 20px;
-            padding: 15px 25px; /* פאדינג מופחת למניעת אורך מופרז */
-            max-width: 1000px;  /* מותאם לרוחב הגריד של הכרטיסיות למטה */
-            margin: 0 auto 20px auto;
+            padding: 20px;
+            max-width: 1050px;
+            margin: 0 auto 25px auto;
             position: relative;
             box-shadow: 0 6px 20px rgba(168, 40, 40, 0.05);
+            box-sizing: border-box;
         }
 
         .top-bar {
@@ -40,7 +42,7 @@
             font-family: monospace;
             color: #b87a4d;
             font-size: 0.8em;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
             direction: ltr;
         }
 
@@ -54,122 +56,40 @@
             box-shadow: 0 0 8px #4CAF50;
         }
 
-        .hero-content {
+        /* גריד פנימי: ימין (אוואטר + טקסט), שמאל (חיפוש ובקרות) */
+        .hero-main-layout {
             display: flex;
+            gap: 20px;
             align-items: center;
             justify-content: space-between;
-            flex-wrap: wrap-reverse;
-            gap: 15px;
-        }
-
-        .hero-text {
-            flex: 1;
-            min-width: 280px;
-            text-align: center;
-        }
-
-        .hero-pill-top {
-            display: inline-block;
-            background: #fdf3e3;
-            border: 1px solid #e0cda9;
-            padding: 3px 12px;
-            border-radius: 12px;
-            font-size: 0.8em;
-            color: var(--primary-red);
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .hero-title {
-            font-size: 1.8em; /* הקטנה קלה לקומפקטיות */
-            font-weight: 900;
-            color: var(--primary-red);
-            margin: 2px 0;
-            letter-spacing: -0.5px;
-            line-height: 1.2;
-        }
-
-        .hero-subtitle {
-            font-size: 0.95em;
-            color: #8c4320;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .dashboard-stats {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin: 6px 0;
-            font-size: 0.82em;
-            font-weight: bold;
-            color: #8c4320;
-        }
-
-        .stat-badge {
-            background: #fbf0d9;
-            border: 1px solid #d9be93;
-            padding: 3px 10px;
-            border-radius: 8px;
-        }
-
-        .ticker-wrap {
-            width: 100%;
-            overflow: hidden;
-            background: rgba(168, 40, 40, 0.05);
-            border-radius: 8px;
-            padding: 4px 0;
-            margin-top: 6px;
-            border: 1px dashed #d9be93;
-        }
-
-        .ticker-move {
-            display: inline-block;
-            white-space: nowrap;
-            padding-right: 100%;
-            animation: ticker 25s linear infinite;
-            color: #8c4320;
-            font-size: 0.82em;
-            font-weight: bold;
-        }
-
-        @keyframes ticker {
-            0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(100%, 0, 0); }
-        }
-
-        .hero-tags {
-            display: flex;
-            justify-content: center;
-            gap: 6px;
             flex-wrap: wrap;
-            margin-top: 6px;
         }
 
-        .hero-tag {
-            background: #fdf3e3;
-            border: 1px solid #d9be93;
-            padding: 3px 10px;
-            border-radius: 10px;
-            font-size: 0.75em;
-            font-family: monospace;
-            font-weight: bold;
-            color: #8c4320;
-        }
-
-        /* האוואטר הראשי - גודל מותאם */
-        .avatar-main-container {
+        /* צד ימין: אוואטר + כותרות */
+        .hero-right-sec {
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin: 0 auto;
+            gap: 15px;
+            flex: 1.2;
+            min-width: 320px;
+        }
+
+        /* האוואטר הראשי - עטוף בעיגול סגול חזק וברקע הרקע של ה-Hero */
+        .avatar-main-container {
             flex-shrink: 0;
         }
 
         .avatar-main-link {
-            display: block;
-            width: 110px;
-            height: 110px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100px;
+            height: 100px;
+            background-color: #faefd9; /* בצבע רקע הכותרת */
+            border: 4px solid var(--purple-border); /* עיגול סגול חזק */
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(123, 31, 162, 0.25);
             transition: transform 0.3s ease;
         }
 
@@ -180,36 +100,136 @@
         .avatar-main-link img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
+            object-fit: cover;
+            border-radius: 50%;
         }
 
-        /* --- CONTROL PANEL (חיפוש, רולטה ופילטרים) --- */
-        .controls-wrapper {
-            max-width: 1000px;
-            margin: 0 auto 25px auto;
+        .hero-text {
+            text-align: right;
+        }
+
+        .hero-pill-top {
+            display: inline-block;
+            background: #fdf3e3;
+            border: 1px solid #e0cda9;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 0.78em;
+            color: var(--primary-red);
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .hero-title {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: var(--primary-red);
+            margin: 2px 0;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 0.88em;
+            color: #8c4320;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .dashboard-stats {
+            display: flex;
+            justify-content: flex-start;
+            gap: 8px;
+            margin: 4px 0;
+            font-size: 0.8em;
+            font-weight: bold;
+            color: #8c4320;
+        }
+
+        .stat-badge {
+            background: #fbf0d9;
+            border: 1px solid #d9be93;
+            padding: 2px 8px;
+            border-radius: 8px;
+        }
+
+        /* --- הסטרייפ המתוקן (בורח נמנע, נשאר בתוך הדיב) --- */
+        .ticker-wrap {
+            width: 100%;
+            max-width: 100%;
+            overflow: hidden;
+            background: rgba(168, 40, 40, 0.05);
+            border-radius: 8px;
+            padding: 4px 0;
+            margin-top: 6px;
+            border: 1px dashed #d9be93;
+            box-sizing: border-box;
+        }
+
+        .ticker-move {
+            display: inline-block;
+            white-space: nowrap;
+            padding-right: 100%;
+            animation: ticker 25s linear infinite;
+            color: #8c4320;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+
+        @keyframes ticker {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(100%, 0, 0); }
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 6px;
+        }
+
+        .hero-tag {
+            background: #fdf3e3;
+            border: 1px solid #d9be93;
+            padding: 2px 8px;
+            border-radius: 8px;
+            font-size: 0.72em;
+            font-family: monospace;
+            font-weight: bold;
+            color: #8c4320;
+        }
+
+        /* צד שמאל: הבקרות (חיפוש, רולטה וסינון) שעלו למעלה */
+        .hero-left-sec {
+            flex: 1;
+            min-width: 300px;
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
             align-items: center;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px solid #ebd9b8;
         }
 
         .terminal-search-box {
             width: 100%;
-            max-width: 650px;
             position: relative;
         }
 
         .terminal-input {
             width: 100%;
-            padding: 10px 45px 10px 15px;
+            padding: 8px 38px 8px 12px;
             background: #2b2b2b;
             color: #00ff66;
             border: 2px solid #a82828;
-            border-radius: 12px;
+            border-radius: 10px;
             font-family: monospace;
-            font-size: 0.9em;
+            font-size: 0.85em;
             box-sizing: border-box;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.1);
             outline: none;
         }
 
@@ -219,7 +239,7 @@
 
         .terminal-icon {
             position: absolute;
-            right: 15px;
+            right: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #00ff66;
@@ -229,45 +249,48 @@
 
         .action-bar {
             display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
+            gap: 8px;
             justify-content: center;
+            width: 100%;
         }
 
         .btn-roulette {
             background: linear-gradient(135deg, #e6a100, #a82828);
             color: white;
             border: none;
-            padding: 8px 18px;
-            border-radius: 20px;
+            padding: 6px 14px;
+            border-radius: 16px;
+            font-size: 0.82em;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
             transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
         }
 
         .btn-roulette:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
-        /* סרגל סינון */
+        /* סרגל סינון קומפקטי */
         .filter-buttons {
             display: flex;
             justify-content: center;
-            gap: 8px;
+            gap: 5px;
             flex-wrap: wrap;
+            width: 100%;
         }
 
         .btn {
-            padding: 8px 18px;
+            padding: 5px 12px;
             border: 1px solid #d9be93;
             background-color: #fdf8eb;
             color: #8c4320;
-            border-radius: 20px;
+            border-radius: 15px;
             cursor: pointer;
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 0.78em;
             transition: all 0.3s;
         }
 
@@ -282,7 +305,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
-            max-width: 1000px;
+            max-width: 1050px;
             margin: 0 auto;
         }
 
@@ -415,57 +438,59 @@
             <span>10.0.30.0/24 // academy.tikshuv.local // session: active <span class="status-dot"></span></span>
         </div>
 
-        <div class="hero-content">
-            <div class="hero-text">
-                <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
-                <h1 class="hero-title">פורטל אתרי לימוד - קבוצות סהר תקשוב</h1>
-                <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
-                
-                <!-- Dashboard Stats -->
-                <div class="dashboard-stats">
-                    <span class="stat-badge" id="siteCountBadge">🔗 טוען משאבים...</span>
-                    <span class="stat-badge">🤖 2 בוטים זמינים</span>
-                </div>
-
-                <!-- Ticker בר מתחלף -->
-                <div class="ticker-wrap">
-                    <div class="ticker-move">
-                        💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע | עקוב אחר התיוגים בכרטיסיות
+        <div class="hero-main-layout">
+            <!-- צד ימין: אוואטר סגול + טקסט + Ticker -->
+            <div class="hero-right-sec">
+                <!-- אוואטר בעיגול סגול חזק ברקע הכותרת -->
+                <div class="avatar-main-container">
+                    <div class="avatar-main-link" title="לוגו סהר תקשוב">
+                        <img src="https://drive.google.com/thumbnail?id=1eVsO38Du8cndWqpQdZWL8w_nyQcTk1DR&sz=w500" alt="אוואטר כותרת">
                     </div>
                 </div>
 
-                <div class="hero-tags">
-                    <span class="hero-tag">גרפיקה</span>
-                    <span class="hero-tag">תשתיות תקשורת</span>
-                    <span class="hero-tag">כיתות י'-י"א</span>
+                <div class="hero-text">
+                    <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
+                    <h1 class="hero-title">פורטל אתרי לימוד - קבוצות סהר תקשוב</h1>
+                    <div class="hero-subtitle">ריכוז משאבים, משימות ותרגול לכל השכבות</div>
+                    
+                    <div class="dashboard-stats">
+                        <span class="stat-badge" id="siteCountBadge">🔗 טוען...</span>
+                        <span class="stat-badge">🤖 2 בוטים</span>
+                    </div>
+
+                    <!-- Ticker בר מתחלף שמור בתוך המסגרת -->
+                    <div class="ticker-wrap">
+                        <div class="ticker-move">
+                            💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע
+                        </div>
+                    </div>
+
+                    <div class="hero-tags">
+                        <span class="hero-tag">גרפיקה</span>
+                        <span class="hero-tag">תשתיות תקשורת</span>
+                        <span class="hero-tag">כיתות י'-י"א</span>
+                    </div>
                 </div>
             </div>
 
-            <div class="avatar-main-container">
-                <div class="avatar-main-link" title="לוגו סהר תקשוב">
-                    <img src="https://drive.google.com/thumbnail?id=1eVsO38Du8cndWqpQdZWL8w_nyQcTk1DR&sz=w500" alt="אוואטר כותרת">
+            <!-- צד שמאל: הבקרות שעלו למעלה -->
+            <div class="hero-left-sec">
+                <div class="terminal-search-box">
+                    <span class="terminal-icon">&gt;_</span>
+                    <input type="text" id="terminalSearch" class="terminal-input" placeholder="חפש לפי נושא, תגית, או שם אתר..." oninput="handleSearch()">
+                </div>
+
+                <div class="action-bar">
+                    <button class="btn-roulette" onclick="triggerRoulette()">🎲 שגר אותי למשימה אקראית!</button>
+                </div>
+
+                <div class="filter-buttons">
+                    <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
+                    <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - גרפיקה</button>
+                    <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תקשורת</button>
+                    <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- אזור בקרה: חיפוש טרמינל, רולטה ופילטרים -->
-    <div class="controls-wrapper">
-        <div class="terminal-search-box">
-            <span class="terminal-icon">&gt;_</span>
-            <input type="text" id="terminalSearch" class="terminal-input" placeholder="חפש לפי נושא, תגית, או שם אתר..." oninput="handleSearch()">
-        </div>
-
-        <div class="action-bar">
-            <button class="btn-roulette" onclick="triggerRoulette()">🎲 שגר אותי למשימה אקראית!</button>
-        </div>
-
-        <!-- כפתורי סינון -->
-        <div class="filter-buttons">
-            <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
-            <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - יישומי גרפיקה</button>
-            <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תשתיות תקשורת</button>
-            <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
         </div>
     </div>
 
@@ -535,7 +560,7 @@
                     grid.innerHTML += cardHtml;
                 }
 
-                document.getElementById('siteCountBadge').innerText = `📚 ${siteCount} משאבי לימוד`;
+                document.getElementById('siteCountBadge').innerText = `📚 ${siteCount} משאבים`;
 
                 filterSelection(currentFilter);
 
