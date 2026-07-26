@@ -22,7 +22,7 @@
             color: var(--text-dark);
         }
 
-        /* --- עיצוב ה-HERO הראשי (קומפקטי, רחב ונמוך) --- */
+        /* --- עיצוב ה-HERO הראשי --- */
         .hero-container {
             background-color: #faefd9;
             border: 1px solid #ebd9b8;
@@ -56,7 +56,6 @@
             box-shadow: 0 0 8px #4CAF50;
         }
 
-        /* גריד פנימי: ימין (אוואטר + טקסט), שמאל (חיפוש ובקרות) */
         .hero-main-layout {
             display: flex;
             gap: 20px;
@@ -65,7 +64,6 @@
             flex-wrap: wrap;
         }
 
-        /* צד ימין: אוואטר + כותרות */
         .hero-right-sec {
             display: flex;
             align-items: center;
@@ -74,7 +72,6 @@
             min-width: 320px;
         }
 
-        /* האוואטר הראשי - עטוף בעיגול סגול חזק וברקע הרקע של ה-Hero */
         .avatar-main-container {
             flex-shrink: 0;
         }
@@ -85,8 +82,8 @@
             align-items: center;
             width: 100px;
             height: 100px;
-            background-color: #faefd9; /* בצבע רקע הכותרת */
-            border: 4px solid var(--purple-border); /* עיגול סגול חזק */
+            background-color: #faefd9;
+            border: 4px solid var(--purple-border);
             border-radius: 50%;
             overflow: hidden;
             box-shadow: 0 4px 12px rgba(123, 31, 162, 0.25);
@@ -153,7 +150,6 @@
             border-radius: 8px;
         }
 
-        /* --- הסטרייפ המתוקן (בורח נמנע, נשאר בתוך הדיב) --- */
         .ticker-wrap {
             width: 100%;
             max-width: 100%;
@@ -200,7 +196,6 @@
             color: #8c4320;
         }
 
-        /* צד שמאל: הבקרות (חיפוש, רולטה וסינון) שעלו למעלה */
         .hero-left-sec {
             flex: 1;
             min-width: 300px;
@@ -273,7 +268,6 @@
             box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
-        /* סרגל סינון קומפקטי */
         .filter-buttons {
             display: flex;
             justify-content: center;
@@ -335,20 +329,32 @@
         .card h3 { margin-top: 0; color: var(--primary-red); }
         .card p { color: #666; font-size: 0.9em; }
 
+        /* --- 📌 עיצוב תגיות וצבעים (Classes & Tags) --- */
         .tags {
             margin: 10px 0;
             display: flex;
-            gap: 5px;
+            gap: 6px;
             flex-wrap: wrap;
         }
 
         .tag {
             background: #fdf3e3;
+            border: 1px solid #d9be93;
             font-size: 0.75em;
-            padding: 3px 8px;
+            padding: 3px 10px;
             border-radius: 12px;
             color: #8c4320;
+            font-weight: 600;
+            display: inline-block;
         }
+
+        /* מחלקות צבעים מותאמות לפי שם התגית */
+        .tag[data-tag*="תוצר"]   { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; } /* אינדיגו/סגול */
+        .tag[data-tag*="מבחן"]   { background: #ffe4e6; color: #9f1239; border-color: #fecdd3; } /* אדום/ורוד */
+        .tag[data-tag*="תרגול"]  { background: #fef9c3; color: #854d0e; border-color: #fef08a; } /* צהוב */
+        .tag[data-tag*="לוגו"]   { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; } /* כחול */
+        .tag[data-tag*="גרפיקה"] { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; } /* כחול בהיר */
+        .tag[data-tag*="תקשורת"] { background: #ffedd5; color: #c2410c; border-color: #fed7aa; } /* כתום */
 
         .card a.site-link {
             display: block;
@@ -439,9 +445,7 @@
         </div>
 
         <div class="hero-main-layout">
-            <!-- צד ימין: אוואטר סגול + טקסט + Ticker -->
             <div class="hero-right-sec">
-                <!-- אוואטר בעיגול סגול חזק ברקע הכותרת -->
                 <div class="avatar-main-container">
                     <div class="avatar-main-link" title="לוגו סהר תקשוב">
                         <img src="https://drive.google.com/thumbnail?id=1eVsO38Du8cndWqpQdZWL8w_nyQcTk1DR&sz=w500" alt="אוואטר כותרת">
@@ -458,7 +462,6 @@
                         <span class="stat-badge">🤖 2 בוטים</span>
                     </div>
 
-                    <!-- Ticker בר מתחלף שמור בתוך המסגרת -->
                     <div class="ticker-wrap">
                         <div class="ticker-move">
                             💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע
@@ -473,7 +476,6 @@
                 </div>
             </div>
 
-            <!-- צד שמאל: הבקרות שעלו למעלה -->
             <div class="hero-left-sec">
                 <div class="terminal-search-box">
                     <span class="terminal-icon">&gt;_</span>
@@ -543,7 +545,8 @@
                     if (tags) {
                         const tagList = tags.split(',');
                         tagList.forEach(t => {
-                            tagsHtml += `<span class="tag">${t.trim()}</span>`;
+                            const trimmedTag = t.trim();
+                            tagsHtml += `<span class="tag" data-tag="${trimmedTag}">${trimmedTag}</span>`;
                         });
                     }
 
@@ -681,4 +684,4 @@
         window.onload = fetchSites;
     </script>
 </body>
-</html>
+</html>cd
