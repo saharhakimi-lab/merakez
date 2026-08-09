@@ -11,7 +11,7 @@
             --primary-red: #a82828;
             --text-dark: #333333;
             --accent-gold: #e6a100;
-            --purple-border: #7b1fa2; /* סגול חזק לאוואטר */
+            --purple-border: #7b1fa2;
         }
 
         body {
@@ -124,7 +124,6 @@
             margin-bottom: 2px;
         }
 
-        /* 📌 כפתור מעוצב לתיקיית תקשוב */
         .btn-drive-folder {
             display: inline-flex;
             align-items: center;
@@ -178,14 +177,14 @@
             border-radius: 8px;
         }
 
+        /* --- הסטרייפ הדינמי החדש --- */
         .ticker-wrap {
             width: 100%;
-            max-width: 100%;
             overflow: hidden;
-            background: rgba(168, 40, 40, 0.05);
-            border-radius: 8px;
-            padding: 4px 0;
-            margin-top: 6px;
+            background: rgba(168, 40, 40, 0.07);
+            border-radius: 10px;
+            padding: 6px 0;
+            margin-top: 15px;
             border: 1px dashed #d9be93;
             box-sizing: border-box;
         }
@@ -194,9 +193,9 @@
             display: inline-block;
             white-space: nowrap;
             padding-right: 100%;
-            animation: ticker 25s linear infinite;
+            animation: ticker 32s linear infinite;
             color: #8c4320;
-            font-size: 0.8em;
+            font-size: 0.85em;
             font-weight: bold;
         }
 
@@ -322,12 +321,11 @@
             border-color: var(--primary-red);
         }
 
-        /* 📌 כפתור "מעדכן" דיסקרטי בתחתית האזור הראשי */
         .hero-footer-bar {
             display: flex;
             justify-content: flex-end;
-            margin-top: 15px;
-            padding-top: 8px;
+            margin-top: 10px;
+            padding-top: 6px;
             border-top: 1px dotted #ebd9b8;
         }
 
@@ -449,7 +447,7 @@
             color: #8c4320;
         }
 
-        /* --- אוואטרים צפים + בועות דיבור --- */
+        /* --- אוואטרים צפים --- */
         .floating-avatars-container {
             position: fixed;
             bottom: 25px;
@@ -527,7 +525,6 @@
                 <div class="hero-text">
                     <div class="hero-header-row">
                         <div class="hero-pill-top">✨ אקדמיית האחוואנים</div>
-                        <!-- 📌 כפתור 1: תיקיית תקשוב -->
                         <a href="https://drive.google.com/drive/folders/1WVzWO9w0l4YY-jAbQOuG0y2X8QvuXUMd" target="_blank" class="btn-drive-folder" title="מעבר לתיקיית תקשוב ב-Drive">
                             📁 תיקיית תקשוב
                         </a>
@@ -539,12 +536,6 @@
                     <div class="dashboard-stats">
                         <span class="stat-badge" id="siteCountBadge">🔗 טוען...</span>
                         <span class="stat-badge">🤖 2 בוטים</span>
-                    </div>
-
-                    <div class="ticker-wrap">
-                        <div class="ticker-move">
-                            💡 טיפ אחוואנים: נתקעת בשיעורי בית? הבוטים הצפים למטה זמינים 24/7 לכל שאלה! | תרגל Subnetting לפחות פעם בשבוע
-                        </div>
                     </div>
 
                     <div class="hero-tags">
@@ -574,7 +565,13 @@
             </div>
         </div>
 
-        <!-- 📌 כפתור 2: מעדכן (דיסקרטי בתחתית האזור הראשי) -->
+        <!-- 📌 הסטרייפ המיקומיוני החדש - ירד למטה ולא מסתיר כלום! -->
+        <div class="ticker-wrap">
+            <div class="ticker-move" id="crazyTickerContent">
+                💡 טוען טיפים מטורללים...
+            </div>
+        </div>
+
         <div class="hero-footer-bar">
             <a href="https://docs.google.com/spreadsheets/d/1LPEwYj4-6KFTKXlq58CJnqxkLi4wwnkmzwtz6qUXrxM/edit?usp=sharing" target="_blank" class="btn-updater-subtle" title="מעבר לגיליון מעדכן">
                 ⚙️ מעדכן
@@ -587,7 +584,7 @@
         <div class="loading-text">טוען נתונים מהגיליון... ⏳</div>
     </div>
 
-    <!-- אוואטרים צפים בצד שמאל למטה + בועות דיבור -->
+    <!-- אוואטרים צפים -->
     <div class="floating-avatars-container">
         <div class="floating-avatar-wrapper">
             <div class="speech-bubble" id="gfxBubble">תקוע בגרפיקה? תשאל אותי! 🎨</div>
@@ -608,6 +605,27 @@
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHUPmbbiSkeoRT5nQ21yhwIeUcAxptQ390F4FlLGWL7PJ4i1KmzjzMgJiYwcj1PfwYtAtSJzczet36/pub?output=csv';
 
         let currentFilter = 'all';
+
+        /* --- מאגר טיפים מטורלל: טכני + העצמה --- */
+        const crazyTipsList = [
+            "🧠 העצמה: טעות היא לא כישלון, היא רק גרסת בטא להצלחה שלך!",
+            "🌐 תקשורת: ב-Subnetting תמיד מורידים 2 כתובות (Network ו-Broadcast)! הנוסחה: 2^n - 2",
+            "🎨 גרפיקה: מכין קובץ לדפוס? תעבוד ב-CMYK! מכין קובץ למסכים? תעבוד ב-RGB!",
+            "🖥️ Cisco: סיימת להגדיר ב-Packet Tracer? אל תשכח `copy run start` שהכל יישמר!",
+            "💪 העצמה: אתה לא צריך לדעת הכל היום, רק להיות 1% טוב יותר מאתמול!",
+            "🖌️ Photoshop: Ctrl+Z זה לא רק מקש ביטול, זה סגנון חיים של מקצוענים!",
+            "🔌 תקשורת: כבל מוצלב (Crossover) לחיבור מכשירים דומים, כבל ישר (Straight-Through) לשונים!",
+            "🔥 העצמה: הציון במבחן מודד את הרגע, לא את הפוטנציאל המטורף שיש בך!",
+            "🎨 Illustrator: ה-Pen Tool לא שונא אותך, הוא פשוט דורש קצת סבלנות ואימון!",
+            "🤖 אחוואנים: נתקעת במשימה? הבוטים הדיגיטליים למטה מחכים לך 24/7!"
+        ];
+
+        function rotateTips() {
+            // מערבב את הטיפים באקראיות
+            const shuffled = [...crazyTipsList].sort(() => 0.5 - Math.random());
+            const tickerText = shuffled.join('   ||   ');
+            document.getElementById('crazyTickerContent').innerText = tickerText;
+        }
 
         async function fetchSites() {
             try {
@@ -768,7 +786,11 @@
             document.getElementById('netBubble').innerText = netPhrases[netIndex];
         }, 6000);
 
-        window.onload = fetchSites;
+        window.onload = () => {
+            rotateTips(); // טוען ומערבב טיפים
+            setInterval(rotateTips, 60000); // מרענן טיפים אקראיים כל דקה
+            fetchSites();
+        };
     </script>
 </body>
 </html>
