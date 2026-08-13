@@ -28,7 +28,7 @@
             border: 1px solid #ebd9b8;
             border-radius: 20px;
             padding: 20px;
-            max-width: 1050px;
+            max-width: 1100px;
             margin: 0 auto 25px auto;
             position: relative;
             box-shadow: 0 6px 20px rgba(168, 40, 40, 0.05);
@@ -177,7 +177,7 @@
             border-radius: 8px;
         }
 
-        /* --- הסטרייפ הדינמי החדש --- */
+        /* --- הסטרייפ הדינמי --- */
         .ticker-wrap {
             width: 100%;
             overflow: hidden;
@@ -204,28 +204,9 @@
             100% { transform: translate3d(100%, 0, 0); }
         }
 
-        .hero-tags {
-            display: flex;
-            justify-content: flex-start;
-            gap: 5px;
-            flex-wrap: wrap;
-            margin-top: 6px;
-        }
-
-        .hero-tag {
-            background: #fdf3e3;
-            border: 1px solid #d9be93;
-            padding: 2px 8px;
-            border-radius: 8px;
-            font-size: 0.72em;
-            font-family: monospace;
-            font-weight: bold;
-            color: #8c4320;
-        }
-
         .hero-left-sec {
             flex: 1;
-            min-width: 300px;
+            min-width: 320px;
             display: flex;
             flex-direction: column;
             gap: 10px;
@@ -255,9 +236,7 @@
             outline: none;
         }
 
-        .terminal-input::placeholder {
-            color: #888;
-        }
+        .terminal-input::placeholder { color: #888; }
 
         .terminal-icon {
             position: absolute;
@@ -269,12 +248,7 @@
             font-weight: bold;
         }
 
-        .action-bar {
-            display: flex;
-            gap: 8px;
-            justify-content: center;
-            width: 100%;
-        }
+        .action-bar { width: 100%; }
 
         .btn-roulette {
             background: linear-gradient(135deg, #e6a100, #a82828);
@@ -295,30 +269,65 @@
             box-shadow: 0 5px 12px rgba(0,0,0,0.2);
         }
 
-        .filter-buttons {
+        /* --- היררכיית הטאבים והתגיות החדשה --- */
+        .tabs-wrapper {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .main-tabs {
+            display: flex;
+            justify-content: space-around;
+            background: #ebd9b8;
+            padding: 3px;
+            border-radius: 12px;
+        }
+
+        .tab-main-btn {
+            flex: 1;
+            padding: 6px 8px;
+            border: none;
+            background: transparent;
+            color: #8c4320;
+            font-weight: bold;
+            font-size: 0.82em;
+            border-radius: 9px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-main-btn.active {
+            background: var(--primary-red);
+            color: white;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+
+        .sub-tags-container {
             display: flex;
             justify-content: center;
             gap: 5px;
             flex-wrap: wrap;
-            width: 100%;
+            min-height: 26px;
         }
 
-        .btn {
-            padding: 5px 12px;
+        .btn-sub-tag {
+            padding: 3px 10px;
             border: 1px solid #d9be93;
             background-color: #fdf8eb;
             color: #8c4320;
-            border-radius: 15px;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: bold;
-            font-size: 0.78em;
-            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 0.74em;
+            transition: all 0.2s;
         }
 
-        .btn:hover, .btn.active {
-            background-color: var(--primary-red);
+        .btn-sub-tag:hover, .btn-sub-tag.active {
+            background-color: var(--accent-gold);
             color: white;
-            border-color: var(--primary-red);
+            border-color: var(--accent-gold);
         }
 
         .hero-footer-bar {
@@ -338,32 +347,29 @@
             transition: opacity 0.2s ease, color 0.2s ease;
         }
 
-        .btn-updater-subtle:hover {
-            opacity: 1;
-            color: var(--primary-red);
-        }
+        .btn-updater-subtle:hover { opacity: 1; color: var(--primary-red); }
 
-        /* רשת הכרטיסיות */
+        /* --- רשת כרטיסיות רגילה --- */
         .site-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1050px;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 18px;
+            max-width: 1100px;
             margin: 0 auto;
+            transition: all 0.3s ease;
         }
 
         .card {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 20px;
+            padding: 16px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.04);
             border: 1px solid #eee;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
             position: relative;
-            overflow: visible;
         }
 
         .card:hover { 
@@ -373,23 +379,18 @@
 
         .card-crazy-avatar {
             position: absolute;
-            top: -12px;
-            left: -12px;
-            width: 45px;
-            height: 45px;
+            top: -10px;
+            left: -10px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             border: 2px solid var(--accent-gold);
             background: white;
             box-shadow: 0 3px 8px rgba(0,0,0,0.2);
             transform: rotate(-30deg);
-            transition: transform 0.3s ease, scale 0.3s ease;
             z-index: 10;
             object-fit: cover;
             pointer-events: none;
-        }
-
-        .card:hover .card-crazy-avatar {
-            transform: rotate(-15deg) scale(1.15);
         }
 
         .card.highlight {
@@ -398,33 +399,19 @@
             transform: scale(1.03);
         }
 
-        .card h3 { margin-top: 0; color: var(--primary-red); }
-        .card p { color: #666; font-size: 0.9em; }
+        .card h3 { margin-top: 0; color: var(--primary-red); font-size: 1.1em; }
+        .card p { color: #666; font-size: 0.85em; line-height: 1.3; }
 
-        .tags {
-            margin: 10px 0;
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-
+        .tags { margin: 8px 0; display: flex; gap: 5px; flex-wrap: wrap; }
         .tag {
             background: #fdf3e3;
             border: 1px solid #d9be93;
-            font-size: 0.75em;
-            padding: 3px 10px;
-            border-radius: 12px;
+            font-size: 0.7em;
+            padding: 2px 8px;
+            border-radius: 10px;
             color: #8c4320;
             font-weight: 600;
-            display: inline-block;
         }
-
-        .tag[data-tag*="תוצר"]   { background: #e0e7ff; color: #3730a3; border-color: #c7d2fe; }
-        .tag[data-tag*="מבחן"]   { background: #ffe4e6; color: #9f1239; border-color: #fecdd3; }
-        .tag[data-tag*="תרגול"]  { background: #fef9c3; color: #854d0e; border-color: #fef08a; }
-        .tag[data-tag*="לוגו"]   { background: #e0f2fe; color: #0369a1; border-color: #bae6fd; }
-        .tag[data-tag*="גרפיקה"] { background: #dbeafe; color: #1e40af; border-color: #bfdbfe; }
-        .tag[data-tag*="תקשורת"] { background: #ffedd5; color: #c2410c; border-color: #fed7aa; }
 
         .card a.site-link {
             display: block;
@@ -432,10 +419,80 @@
             background-color: var(--primary-red);
             color: white;
             text-decoration: none;
-            padding: 10px;
+            padding: 8px;
             border-radius: 8px;
             font-weight: bold;
-            margin-top: 10px;
+            font-size: 0.85em;
+            margin-top: 8px;
+        }
+
+        /* 🚀 MATRIX VIEW: 10 קבצים בשורה! 🚀 */
+        .site-grid.matrix-mode {
+            grid-template-columns: repeat(10, 1fr) !important;
+            gap: 8px;
+        }
+
+        @media (max-width: 1200px) {
+            .site-grid.matrix-mode { grid-template-columns: repeat(5, 1fr) !important; }
+        }
+        @media (max-width: 768px) {
+            .site-grid.matrix-mode { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+
+        .site-grid.matrix-mode .card {
+            padding: 8px 6px;
+            min-height: 90px;
+            border-radius: 10px;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border: 1px solid #e2d3b7;
+        }
+
+        .site-grid.matrix-mode .card-crazy-avatar,
+        .site-grid.matrix-mode .card p,
+        .site-grid.matrix-mode .card .tags {
+            display: none !important; /* העלמת עומס בתצוגת המיקרו */
+        }
+
+        .site-grid.matrix-mode .card h3 {
+            font-size: 0.78em;
+            margin: 2px 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+        }
+
+        .site-grid.matrix-mode .card a.site-link {
+            padding: 4px 2px;
+            font-size: 0.7em;
+            width: 100%;
+            margin-top: 4px;
+            border-radius: 5px;
+        }
+
+        /* Hover Tooltip - הצצה רחפה מטורפת בלחיצה/ריחוף */
+        .site-grid.matrix-mode .card:hover::after {
+            content: attr(data-desc);
+            position: absolute;
+            bottom: 105%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2b2b2b;
+            color: #00ff66;
+            font-family: monospace;
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.78em;
+            width: 180px;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            pointer-events: none;
+            text-align: right;
+            line-height: 1.2;
+            border: 1px solid var(--accent-gold);
         }
 
         .hide { display: none !important; }
@@ -458,9 +515,7 @@
             z-index: 1000;
         }
 
-        .floating-avatar-wrapper {
-            position: relative;
-        }
+        .floating-avatar-wrapper { position: relative; }
 
         .speech-bubble {
             position: absolute;
@@ -478,7 +533,6 @@
             border: 1px solid #ebd9b8;
             pointer-events: none;
             opacity: 0.95;
-            transition: opacity 0.3s;
         }
 
         .speech-bubble::after {
@@ -537,12 +591,6 @@
                         <span class="stat-badge" id="siteCountBadge">🔗 טוען...</span>
                         <span class="stat-badge">🤖 2 בוטים</span>
                     </div>
-
-                    <div class="hero-tags">
-                        <span class="hero-tag">גרפיקה</span>
-                        <span class="hero-tag">תשתיות תקשורת</span>
-                        <span class="hero-tag">כיתות י'-י"א</span>
-                    </div>
                 </div>
             </div>
 
@@ -556,16 +604,21 @@
                     <button class="btn-roulette" onclick="triggerRoulette()">🎲 שגר אותי למשימה אקראית!</button>
                 </div>
 
-                <div class="filter-buttons">
-                    <button class="btn active" onclick="filterSelection('all')">הצג הכל</button>
-                    <button class="btn" onclick="filterSelection('y-graphics')">כיתה י' - גרפיקה</button>
-                    <button class="btn" onclick="filterSelection('y-network')">כיתה י' - תקשורת</button>
-                    <button class="btn" onclick="filterSelection('ya')">כיתה י"א</button>
+                <!-- 📌 מנגנון הטאבים והתגיות החדש -->
+                <div class="tabs-wrapper">
+                    <div class="main-tabs">
+                        <button class="tab-main-btn active" onclick="switchMainTab('graphics', this)">🎨 גרפיקה</button>
+                        <button class="tab-main-btn" onclick="switchMainTab('network', this)">🌐 תשתיות תקשורת</button>
+                        <button class="tab-main-btn" onclick="switchMainTab('all', this)">📁 כל הקבצים (מטריצה)</button>
+                    </div>
+
+                    <div class="sub-tags-container" id="subTagsContainer">
+                        <!-- התגיות הדינמיות יתרנדרו פה ב-JS -->
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- 📌 הסטרייפ המיקומיוני החדש - ירד למטה ולא מסתיר כלום! -->
         <div class="ticker-wrap">
             <div class="ticker-move" id="crazyTickerContent">
                 💡 טוען טיפים מטורללים...
@@ -604,9 +657,16 @@
     <script>
         const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTHUPmbbiSkeoRT5nQ21yhwIeUcAxptQ390F4FlLGWL7PJ4i1KmzjzMgJiYwcj1PfwYtAtSJzczet36/pub?output=csv';
 
-        let currentFilter = 'all';
+        let currentMainTab = 'graphics';
+        let currentSubTag = 'all';
 
-        /* --- מאגר טיפים מטורלל: טכני + העצמה --- */
+        // הגדרת תת-תגיות לכל טאב ראשי
+        const tabTagsMap = {
+            'graphics': ['הכל', 'גרפיקה', 'לוגו', 'תוצר', 'מבחן'],
+            'network': ['הכל', 'תקשורת', 'תשתיות', 'תרגול', 'מבחן'],
+            'all': ['הכל', 'גרפיקה', 'תקשורת', 'תוצר', 'תרגול', 'מבחן']
+        };
+
         const crazyTipsList = [
             "🧠 העצמה: טעות היא לא כישלון, היא רק גרסת בטא להצלחה שלך!",
             "🌐 תקשורת: ב-Subnetting תמיד מורידים 2 כתובות (Network ו-Broadcast)! הנוסחה: 2^n - 2",
@@ -616,15 +676,12 @@
             "🖌️ Photoshop: Ctrl+Z זה לא רק מקש ביטול, זה סגנון חיים של מקצוענים!",
             "🔌 תקשורת: כבל מוצלב (Crossover) לחיבור מכשירים דומים, כבל ישר (Straight-Through) לשונים!",
             "🔥 העצמה: הציון במבחן מודד את הרגע, לא את הפוטנציאל המטורף שיש בך!",
-            "🎨 Illustrator: ה-Pen Tool לא שונא אותך, הוא פשוט דורש קצת סבלנות ואימון!",
-            "🤖 אחוואנים: נתקעת במשימה? הבוטים הדיגיטליים למטה מחכים לך 24/7!"
+            "🎨 Illustrator: ה-Pen Tool לא שונא אותך, הוא פשוט דורש קצת סבלנות ואימון!"
         ];
 
         function rotateTips() {
-            // מערבב את הטיפים באקראיות
             const shuffled = [...crazyTipsList].sort(() => 0.5 - Math.random());
-            const tickerText = shuffled.join('   ||   ');
-            document.getElementById('crazyTickerContent').innerText = tickerText;
+            document.getElementById('crazyTickerContent').innerText = shuffled.join('   ||   ');
         }
 
         async function fetchSites() {
@@ -640,7 +697,6 @@
 
                 for (let i = 1; i < rows.length; i++) {
                     const [title, description, url, classes, tags] = rows[i];
-
                     if (!title || !url) continue;
 
                     siteCount++;
@@ -650,13 +706,16 @@
                         const tagList = tags.split(',');
                         tagList.forEach(t => {
                             const trimmedTag = t.trim();
-                            tagsHtml += `<span class="tag" data-tag="${trimmedTag}">${trimmedTag}</span>`;
+                            tagsHtml += `<span class="tag">${trimmedTag}</span>`;
                         });
                     }
 
                     const cardHtml = `
-                        <div class="card ${classes ? classes.trim() : ''}" data-title="${title.trim()}" data-desc="${description ? description.trim() : ''}" data-tags="${tags ? tags.trim() : ''}">
-                            <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w200" alt="אוואטר מטורלל" class="card-crazy-avatar">
+                        <div class="card ${classes ? classes.trim() : ''}" 
+                             data-title="${title.trim()}" 
+                             data-desc="${description ? description.trim() : title.trim()}" 
+                             data-tags="${tags ? tags.trim() : ''}">
+                            <img src="https://drive.google.com/thumbnail?id=1BHxytxfATgrv3wpk_8slqpRX08p2Dzml&sz=w200" alt="אוואטר" class="card-crazy-avatar">
                             <div>
                                 <h3>${title.trim()}</h3>
                                 <p>${description ? description.trim() : ''}</p>
@@ -669,12 +728,14 @@
                 }
 
                 document.getElementById('siteCountBadge').innerText = `📚 ${siteCount} משאבים`;
-
-                filterSelection(currentFilter);
+                
+                // אתחול תגיות ראשוני
+                renderSubTags();
+                handleSearch();
 
             } catch (error) {
                 console.error("שגיאה בטעינת הגיליון:", error);
-                document.getElementById('siteGrid').innerHTML = '<div class="loading-text">אירעה שגיאה בטעינת הנתונים. וודא שהקישור של Google Sheets תקין.</div>';
+                document.getElementById('siteGrid').innerHTML = '<div class="loading-text">אירעה שגיאה בטעינת הנתונים. וודא שהקישור תקין.</div>';
             }
         }
 
@@ -703,6 +764,50 @@
             return r;
         }
 
+        // מעבר בין טאבים ראשיים
+        function switchMainTab(tabKey, btnElement) {
+            currentMainTab = tabKey;
+            currentSubTag = 'all';
+
+            document.querySelectorAll('.tab-main-btn').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+
+            const grid = document.getElementById('siteGrid');
+            if (tabKey === 'all') {
+                grid.classList.add('matrix-mode'); // הפעלת מצב 10 בשורה!
+            } else {
+                grid.classList.remove('matrix-mode');
+            }
+
+            renderSubTags();
+            handleSearch();
+        }
+
+        // רינדור תת-התגיות הדינמי
+        function renderSubTags() {
+            const container = document.getElementById('subTagsContainer');
+            container.innerHTML = '';
+
+            const tags = tabTagsMap[currentMainTab] || [];
+            tags.forEach(tag => {
+                const isAll = tag === 'הכל';
+                const activeClass = (isAll && currentSubTag === 'all') || currentSubTag === tag ? 'active' : '';
+                const tagBtn = document.createElement('button');
+                tagBtn.className = `btn-sub-tag ${activeClass}`;
+                tagBtn.innerText = tag;
+                tagBtn.onclick = () => filterSubTag(isAll ? 'all' : tag, tagBtn);
+                container.appendChild(tagBtn);
+            });
+        }
+
+        // סינון לפי תת-תגית
+        function filterSubTag(tagValue, btnElement) {
+            currentSubTag = tagValue;
+            document.querySelectorAll('.btn-sub-tag').forEach(b => b.classList.remove('active'));
+            btnElement.classList.add('active');
+            handleSearch();
+        }
+
         function handleSearch() {
             const query = document.getElementById('terminalSearch').value.toLowerCase();
             let cards = document.getElementsByClassName("card");
@@ -711,30 +816,30 @@
                 const title = cards[i].getAttribute('data-title').toLowerCase();
                 const desc = cards[i].getAttribute('data-desc').toLowerCase();
                 const tags = cards[i].getAttribute('data-tags').toLowerCase();
+                const cardClasses = cards[i].className.toLowerCase();
 
-                const matchesQuery = title.includes(query) || desc.includes(query) || tags.includes(query);
-                const matchesCategory = currentFilter === 'all' || cards[i].classList.contains(currentFilter);
+                // 1. בדיקת טאב ראשי
+                let matchesMainTab = false;
+                if (currentMainTab === 'all') {
+                    matchesMainTab = true;
+                } else if (currentMainTab === 'graphics') {
+                    matchesMainTab = tags.includes('גרפיקה') || cardClasses.includes('y-graphics');
+                } else if (currentMainTab === 'network') {
+                    matchesMainTab = tags.includes('תקשורת') || tags.includes('תשתיות') || cardClasses.includes('y-network');
+                }
 
-                if (matchesQuery && matchesCategory) {
+                // 2. בדיקת תגית משנית
+                let matchesSubTag = (currentSubTag === 'all') || tags.includes(currentSubTag.toLowerCase());
+
+                // 3. בדיקת חיפוש טקסטואלי
+                let matchesQuery = title.includes(query) || desc.includes(query) || tags.includes(query);
+
+                if (matchesMainTab && matchesSubTag && matchesQuery) {
                     cards[i].classList.remove("hide");
                 } else {
                     cards[i].classList.add("hide");
                 }
             }
-        }
-
-        function filterSelection(category) {
-            currentFilter = category;
-            let buttons = document.getElementsByClassName("btn");
-
-            for (let btn of buttons) {
-                btn.classList.remove("active");
-                if (btn.getAttribute('onclick').includes(`'${category}'`)) {
-                    btn.classList.add("active");
-                }
-            }
-
-            handleSearch();
         }
 
         function triggerRoulette() {
@@ -763,32 +868,9 @@
             cycle();
         }
 
-        const gfxPhrases = [
-            "תקוע בגרפיקה? תשאל אותי! 🎨",
-            "רוצה טיפ ב-Photoshop? 🖌️",
-            "צריך עזרה בעיצוב? אני פה! ✨"
-        ];
-
-        const netPhrases = [
-            "מסתבך ברשתות? בוא נפתור! 🌐",
-            "שאלות על Subnetting? דבר אליי 🖥️",
-            "רוצה לתרגל פקודות CISCO? 🚀"
-        ];
-
-        let gfxIndex = 0;
-        let netIndex = 0;
-
-        setInterval(() => {
-            gfxIndex = (gfxIndex + 1) % gfxPhrases.length;
-            netIndex = (netIndex + 1) % netPhrases.length;
-            
-            document.getElementById('gfxBubble').innerText = gfxPhrases[gfxIndex];
-            document.getElementById('netBubble').innerText = netPhrases[netIndex];
-        }, 6000);
-
         window.onload = () => {
-            rotateTips(); // טוען ומערבב טיפים
-            setInterval(rotateTips, 60000); // מרענן טיפים אקראיים כל דקה
+            rotateTips();
+            setInterval(rotateTips, 60000);
             fetchSites();
         };
     </script>
