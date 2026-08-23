@@ -199,6 +199,18 @@
             font-weight: bold;
         }
 
+        /* עיצוב האוואטר המוקטן בתוך הסטרייפ */
+        .ticker-move img {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-left: 6px;
+            margin-right: 2px;
+            object-fit: cover;
+            border: 1px solid var(--accent-gold);
+        }
+
         @keyframes ticker {
             0% { transform: translate3d(0, 0, 0); }
             100% { transform: translate3d(100%, 0, 0); }
@@ -426,7 +438,7 @@
             margin-top: 8px;
         }
 
-        /* 🚀 MATRIX VIEW: 10 קבצים בשורה! 🚀 */
+        /* MATRIX VIEW: 10 קבצים בשורה */
         .site-grid.matrix-mode {
             grid-template-columns: repeat(10, 1fr) !important;
             gap: 8px;
@@ -453,7 +465,7 @@
         .site-grid.matrix-mode .card-crazy-avatar,
         .site-grid.matrix-mode .card p,
         .site-grid.matrix-mode .card .tags {
-            display: none !important; /* העלמת עומס בתצוגת המיקרו */
+            display: none !important;
         }
 
         .site-grid.matrix-mode .card h3 {
@@ -473,7 +485,6 @@
             border-radius: 5px;
         }
 
-        /* Hover Tooltip - הצצה רחפה מטורפת בלחיצה/ריחוף */
         .site-grid.matrix-mode .card:hover::after {
             content: attr(data-desc);
             position: absolute;
@@ -621,7 +632,7 @@
 
         <div class="ticker-wrap">
             <div class="ticker-move" id="crazyTickerContent">
-                💡 טוען טיפים מטורללים...
+                טוען טיפים מטורללים...
             </div>
         </div>
 
@@ -667,21 +678,24 @@
             'all': ['הכל', 'גרפיקה', 'תקשורת', 'תוצר', 'תרגול', 'מבחן']
         };
 
+        // האוואטר המוקטן מ-Google Drive
+        const avatarImgTag = `<img src="https://drive.google.com/thumbnail?id=1t9QaPCKLvtAhWncetA83ALY8EIvpnFte&sz=w100" alt="אוואטר">`;
+
         const crazyTipsList = [
-            "🧠 העצמה: טעות היא לא כישלון, היא רק גרסת בטא להצלחה שלך!",
-            "🌐 תקשורת: ב-Subnetting תמיד מורידים 2 כתובות (Network ו-Broadcast)! הנוסחה: 2^n - 2",
-            "🎨 גרפיקה: מכין קובץ לדפוס? תעבוד ב-CMYK! מכין קובץ למסכים? תעבוד ב-RGB!",
-            "🖥️ Cisco: סיימת להגדיר ב-Packet Tracer? אל תשכח `copy run start` שהכל יישמר!",
-            "💪 העצמה: אתה לא צריך לדעת הכל היום, רק להיות 1% טוב יותר מאתמול!",
-            "🖌️ Photoshop: Ctrl+Z זה לא רק מקש ביטול, זה סגנון חיים של מקצוענים!",
-            "🔌 תקשורת: כבל מוצלב (Crossover) לחיבור מכשירים דומים, כבל ישר (Straight-Through) לשונים!",
-            "🔥 העצמה: הציון במבחן מודד את הרגע, לא את הפוטנציאל המטורף שיש בך!",
-            "🎨 Illustrator: ה-Pen Tool לא שונא אותך, הוא פשוט דורש קצת סבלנות ואימון!"
+            `${avatarImgTag} העצמה: טעות היא לא כישלון, היא רק גרסת בטא להצלחה שלך!`,
+            `${avatarImgTag} תקשורת: ב-Subnetting תמיד מורידים 2 כתובות (Network ו-Broadcast)! הנוסחה: 2^n - 2`,
+            `${avatarImgTag} גרפיקה: מכין קובץ לדפוס? תעבוד ב-CMYK! מכין קובץ למסכים? תעבוד ב-RGB!`,
+            `${avatarImgTag} Cisco: סיימת להגדיר ב-Packet Tracer? אל תשכח copy run start שהכל יישמר!`,
+            `${avatarImgTag} העצמה: אתה לא צריך לדעת הכל היום, רק להיות 1% טוב יותר מאתמול!`,
+            `${avatarImgTag} Photoshop: Ctrl+Z זה לא רק מקש ביטול, זה סגנון חיים של מקצוענים!`,
+            `${avatarImgTag} תקשורת: כבל מוצלב (Crossover) לחיבור מכשירים דומים, כבל ישר (Straight-Through) לשונים!`,
+            `${avatarImgTag} העצמה: הציון במבחן מודד את הרגע, לא את הפוטנציאל המטורף שיש בך!`,
+            `${avatarImgTag} Illustrator: ה-Pen Tool לא שונא אותך, הוא פשוט דורש קצת סבלנות ואימון!`
         ];
 
         function rotateTips() {
             const shuffled = [...crazyTipsList].sort(() => 0.5 - Math.random());
-            document.getElementById('crazyTickerContent').innerText = shuffled.join('   ||   ');
+            document.getElementById('crazyTickerContent').innerHTML = shuffled.join('   ||   ');
         }
 
         async function fetchSites() {
